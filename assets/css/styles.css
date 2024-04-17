@@ -88,20 +88,30 @@ body{
     }
 }
 /* Body Center */
-.carousel {
-    margin: 0;
-    width: 100%;
-  }
-  
-  .carousel-inner {
-    width: 100%;
-    max-height: 800px;
+.color{
+    background-image: url('../img/fondo-carrusel-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.slide-box {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .carousel-item img {
     max-width: 100%;
     height: auto;
-    max-height: 600px;
+    max-height: 400px;
+}
+
+@media (min-width: 700px) {
+    .slide-box {
+        background-image: url('https://image.freepik.com/vector-gratis/fondo-pagina-comic-purpura-estilo-pop-art-espacio-vacio-plantilla-rayas-puntos-textura-efecto-semitono-ilustracion-vectorial_515038-3592.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 /* Footer */
