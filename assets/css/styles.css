@@ -12,7 +12,7 @@ body{
 }
 /* Header */
 .header{
-    background-color: #1b3039;
+    background-color: #34495E;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +52,7 @@ body{
     
 }
 .header .nav-links li a:hover{
-    color: #ffcb0e;
+    color: #F1C40F;
 }
 .header .btn_contacto button{
     font-weight: 700;
@@ -65,8 +65,8 @@ body{
     transition: all 0.3s ease 0s;
 }
 .header .btn_contacto button:hover{
-    background-color: #e2f1f8;
-    color: #ffcb0e;
+    background-color: #ECF0F1;
+    color: #F1C40F;
     transform: scale(1.1);
 }
 @media only screen and (max-width: 600px) {
