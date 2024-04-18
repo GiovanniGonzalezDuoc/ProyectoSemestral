@@ -1,0 +1,15 @@
+.agregarcarrito{
+        background-color: rgb(77, 225, 77); 
+        border: none; 
+        color: white; 
+        text-transform: uppercase; 
+        padding-top: .8rem;   
+        padding-bottom: .8rem;  
+        border-radius: .8rem;  
+    }
+.agregarcarrito:hover{   
+    cursor: pointer; 
+     background-color: rgb(0, 255, 0);  
+     transition: .3s ease-in;    
+      
+}
