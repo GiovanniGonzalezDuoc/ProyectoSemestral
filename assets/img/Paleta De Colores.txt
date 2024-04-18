@@ -1,0 +1,19 @@
+Turquesa: #1ABC9C
+Esmeralda: #2ECC71
+Azul Rivera: #3498DB
+Amatista: #9B59B6
+Asfalto Mojado: #34495E
+Verde Marino: #16A085
+Nefritis: #27AE60
+Agujero de Belice: #2980B9
+Glicina: #8E44AD
+Azul Medianoche: #2C3E50
+Girasol: #F1C40F
+Zanahoria: #E67E22
+Alizarina: #E74C3C
+Nubes: #ECF0F1
+Concreto: #95A5A6
+Naranja: #F39C12
+Calabaza: #D35400
+Granada: #C0392B
+Plata: #BDC3C7
