@@ -54,3 +54,33 @@ function mostrarDetallesComic(comic) {
     const comicsModalCustom = new bootstrap.Modal(document.getElementById('comicsModalCustom'));
     comicsModalCustom.show();
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const comicsLink = document.getElementById('comicsLink');
+    const aboutUsLink = document.getElementById('aboutUsLink');
+    const loginFormURL = './Login/LoginForm.html';  // URL del formulario de login
+
+    comicsLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (!isUserLoggedIn()) {
+            alert('Debes iniciar sesión para acceder a los cómics.');
+            window.location.href = loginFormURL;
+        } else {
+            window.location.href = './centrocards/comics.html';  // URL de la sección de cómics
+        }
+    });
+
+    aboutUsLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (!isUserLoggedIn()) {
+            alert('Debes iniciar sesión para acceder a la sección "Sobre Nosotros".');
+            window.location.href = loginFormURL;
+        } else {
+            window.location.href = './Login/SobreNosotros.html';  // URL de la sección "Sobre Nosotros"
+        }
+    });
+
+    function isUserLoggedIn() {
+        // Suponiendo que guardas el ID del usuario en el localStorage cuando inicia sesión
+        return localStorage.getItem('userId') !== null;
+    }
+});
