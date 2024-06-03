@@ -240,4 +240,7 @@ body {
 .attribution a {
   color: hsl(228deg, 45%, 44%);
 }
+.errores {
+  border: 2px solid red;
+}
 

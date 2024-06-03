@@ -59,6 +59,44 @@ function validateForm() {
 
 document.getElementById('paymentForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    // Additional form submission logic here
+    
+    // Validar si se ha llenado algún campo del formulario
+    const cardholder = document.getElementById('cardholder').value.trim();
+    const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+    const cardMonth = document.getElementById('cardMonth').value.trim();
+    const cardYear = document.getElementById('cardYear').value.trim();
+    const cardCvc = document.getElementById('cardCvc').value.trim();
+
+    const fields = [
+        { id: 'cardholder', value: cardholder },
+        { id: 'cardNumber', value: cardNumber },
+        { id: 'cardMonth', value: cardMonth },
+        { id: 'cardYear', value: cardYear },
+        { id: 'cardCvc', value: cardCvc }
+    ];
+
+    let firstEmptyField = null;
+
+    // Iterar sobre los campos y resaltar los que están vacíos
+    fields.forEach(field => {
+        const element = document.getElementById(field.id);
+        if (!field.value) {
+            element.classList.add('errores');
+            if (!firstEmptyField) {
+                firstEmptyField = element;
+            }
+        } else {
+            element.classList.remove('errores');
+        }
+    });
+
+    // Si hay algún campo vacío, enfocar el primer campo vacío
+    if (firstEmptyField) {
+        firstEmptyField.focus();
+        alert("Por favor, complete todos los campos del formulario antes de enviarlo.");
+        return; // Detener el envío del formulario
+    }
+
+    // Si todos los campos están completos, redirigir a "Agradecimiento.html"
     window.location.href = "Agradecimiento.html";
 });
