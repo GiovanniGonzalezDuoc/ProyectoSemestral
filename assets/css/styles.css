@@ -262,3 +262,18 @@ body{
         margin-bottom: 30px;
     }
 }
+.headernav {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+}
+.barra-negra {
+    padding: 10px 0;
+}
+
+.barra {
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}

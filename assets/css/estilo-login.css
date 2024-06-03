@@ -125,8 +125,21 @@ input[type="button"] {
 .registrarse a:hover {
     text-decoration: underline;
 }
-
-
+.buttonregistro {
+    width: 50%;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+.buttonregistro:hover {
+    background-color: #45a049; /* color de fondo en hover */
+}
 @media (max-width: 400px) {
     .formulario {
         width: 90%;

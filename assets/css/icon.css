@@ -1,0 +1,15 @@
+#cartIcon {
+    font-size: 4rem; /* Ajusta el tamaño del ícono */
+    color: #333; /* Color del ícono */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+    transition: color 0.3s ease; /* Transición suave al cambiar de color */
+    display: flex;
+    justify-content: end;
+}
+
+#cartIcon:hover {
+    color: #007bff; /* Cambia el color al pasar sobre el ícono */
+}
+@media screen {
+    
+}

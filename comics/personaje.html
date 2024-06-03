@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/card.css ">
+    <link rel="stylesheet" href="../assets/css/carrito.css">
 </head>
 <body>
     <!-- Header -->
@@ -17,7 +18,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../centrocards/centrocards.html">Comics</a></li>
+                <li><a href="../centrocards/comics.html">Comics</a></li>
                 <li><a href="../Login/SobreNosotros.html">Sobre Nosotros</a></li>
             </ul>
         </nav>
@@ -25,18 +26,16 @@
     </header>
     <!-- Body -->
     <div class="container">
-        <div class="card">
-            <img class="gremlins" src="../assets/img/gremlins.nunca le des de comer despues de medianoche.webp" alt="Foto Comics BokunoHero">
-            </div>
-        <div class="card2">
-            <b><header>GREMLINS</header></b>
-            <b><p class="textoizquierda">Descripcion </p></b>
-            <p class="fontdesc">Este libro se presenta como la guía más completa en español sobre el filme original y su secuela. Asimismo, ofrece abundante información sobre el verdadero origen de las criaturas, detalles sobre el rodaje, la banda sonora y muchas sorpresas más. Cuida bien el ejemplar que tienes en tus manos. Nunca lo mojes, no lo expongas a la luz brillante y, sobre todo, no lo leas más allá de la medianoche. Quedas avisado.
-            </p>
-            <p class="fontdesc">Autor: Francisco Javier Millan</p>
-            <a href="../Login/Pagos.html">
-                <div class="botoncompra"><p class="textoprecio">$31.500</p><button class="ButtonClass">Comprar</button></div>
-            </a>
+        <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img id="imagePage"src="" alt="" class="w-75">
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h5 id="namePage"></h5>
+                    <p id="descriptionPage"></p>
+                    <p id="precioPage"></p>
+                    <a href="../centrocards/comics.html" class="btn btn-warning">Volver</a>
+                </div>
         </div>
     </div>
     <!-- Footer -->
@@ -83,5 +82,7 @@
         </div>
         
     </footer> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script type="module" src="../assets/js/script.js"></script>
 </body>
 </html>
