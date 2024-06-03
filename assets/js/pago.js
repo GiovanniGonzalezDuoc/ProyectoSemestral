@@ -87,5 +87,5 @@ function mostrarCarrito() {
 mostrarCarrito();
 
 document.getElementById('btnPagar').addEventListener('click', function() {
-    window.location.href = '../login/MetodoPago.html';
+    window.location.href = '../Login/MetodoPago.html';
 });
