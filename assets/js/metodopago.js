@@ -60,5 +60,5 @@ function validateForm() {
 document.getElementById('paymentForm').addEventListener('submit', function (e) {
     e.preventDefault();
     // Additional form submission logic here
-    alert('Form submitted successfully!');
+    window.location.href = "Agradecimiento.html";
 });

@@ -2,6 +2,7 @@ import { getPersonajes } from "./Peticiones/getPersonajes.js";
 
 // Inicializar el carrito de compras
 const carrito = [];
+let totalCarrito = 0; // Variable para almacenar el total del carrito
 
 // Función para enviar datos del cómic seleccionado
 const enviarDatos = (comic) => {
@@ -34,6 +35,22 @@ const enviarDatos = (comic) => {
         });
 };
 
+// Función para calcular la cantidad total de productos en el carrito
+const calcularCantidadTotalCarrito = () => {
+    let cantidadTotal = 0;
+    carrito.forEach((comic) => {
+        cantidadTotal += comic.cantidad;
+    });
+    return cantidadTotal;
+};
+
+// Función para actualizar el ícono de la compra con la cantidad total del carrito
+const actualizarIconoCarrito = () => {
+    const cartItemCount = document.getElementById('cartItemCount');
+    const cantidadTotal = calcularCantidadTotalCarrito();
+    cartItemCount.textContent = cantidadTotal;
+};
+
 // Función para agregar un cómic al carrito
 const agregarAlCarrito = (comic) => {
     if (comic.stock > 0) {
@@ -45,7 +62,9 @@ const agregarAlCarrito = (comic) => {
             carrito.push(comic);
         }
         comic.stock--;
+        totalCarrito += comic.precio; // Sumar el precio del cómic al total del carrito
         actualizarCarrito();
+        actualizarIconoCarrito(); // Actualizar el ícono del carrito
     } else {
         alert('¡Producto agotado!');
     }
@@ -55,12 +74,14 @@ const agregarAlCarrito = (comic) => {
 const eliminarDelCarrito = (index) => {
     const comic = carrito[index];
     comic.stock++;
+    totalCarrito -= comic.precio * comic.cantidad; // Restar el precio total del cómic eliminado
     if (comic.cantidad > 1) {
         comic.cantidad--;
     } else {
         carrito.splice(index, 1);
     }
     actualizarCarrito();
+    actualizarIconoCarrito(); // Actualizar el ícono del carrito
 };
 
 // Función para aumentar la cantidad de un cómic en el carrito
@@ -69,7 +90,9 @@ const aumentarCantidad = (index) => {
     if (comic.stock > 0) {
         comic.cantidad++;
         comic.stock--;
+        totalCarrito += comic.precio; // Sumar el precio del cómic al total del carrito
         actualizarCarrito();
+        actualizarIconoCarrito(); // Actualizar el ícono del carrito
     } else {
         alert('¡No hay suficiente stock!');
     }
@@ -81,47 +104,59 @@ const disminuirCantidad = (index) => {
     if (comic.cantidad > 1) {
         comic.cantidad--;
         comic.stock++;
+        totalCarrito -= comic.precio; // Restar el precio del cómic al total del carrito
         actualizarCarrito();
+        actualizarIconoCarrito(); // Actualizar el ícono del carrito
     }
 };
 
 // Función para actualizar el carrito en la interfaz
 const actualizarCarrito = () => {
     const carritoElemento = document.getElementById('carrito');
-    carritoElemento.innerHTML = '';
+    if (carritoElemento) {
+        carritoElemento.innerHTML = '';
 
-    carrito.forEach((comic, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${comic.nombre} x${comic.cantidad} - $${comic.precio * comic.cantidad}`;
+        carrito.forEach((comic, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${comic.nombre} x${comic.cantidad} - $${comic.precio * comic.cantidad}`;
 
-        const cantidadWrapper = document.createElement('div');
-        cantidadWrapper.classList.add('cantidad-buttons');
+            const cantidadWrapper = document.createElement('div');
+            cantidadWrapper.classList.add('cantidad-buttons');
 
-        const cantidadLabel = document.createElement('span');
-        cantidadLabel.classList.add('cantidad-label');
-        cantidadLabel.textContent = 'Cantidad:';
+            const cantidadLabel = document.createElement('span');
+            cantidadLabel.classList.add('cantidad-label');
+            cantidadLabel.textContent = 'Cantidad:';
 
-        const btnAumentar = document.createElement('button');
-        btnAumentar.textContent = '+';
-        btnAumentar.addEventListener('click', () => aumentarCantidad(index));
+            const btnAumentar = document.createElement('button');
+            btnAumentar.textContent = '+';
+            btnAumentar.addEventListener('click', () => aumentarCantidad(index));
 
-        const btnDisminuir = document.createElement('button');
-        btnDisminuir.textContent = '-';
-        btnDisminuir.addEventListener('click', () => disminuirCantidad(index));
+            const btnDisminuir = document.createElement('button');
+            btnDisminuir.textContent = '-';
+            btnDisminuir.addEventListener('click', () => disminuirCantidad(index));
 
-        cantidadWrapper.appendChild(cantidadLabel);
-        cantidadWrapper.appendChild(btnDisminuir);
-        cantidadWrapper.appendChild(btnAumentar);
+            cantidadWrapper.appendChild(cantidadLabel);
+            cantidadWrapper.appendChild(btnDisminuir);
+            cantidadWrapper.appendChild(btnAumentar);
 
-        li.appendChild(cantidadWrapper);
+            li.appendChild(cantidadWrapper);
 
-        const botonEliminar = document.createElement('button');
-        botonEliminar.textContent = 'Eliminar';
-        botonEliminar.addEventListener('click', () => eliminarDelCarrito(index));
+            const botonEliminar = document.createElement('button');
+            botonEliminar.textContent = 'Eliminar';
+            botonEliminar.addEventListener('click', () => eliminarDelCarrito(index));
 
-        li.appendChild(botonEliminar);
-        carritoElemento.appendChild(li);
-    });
+            li.appendChild(botonEliminar);
+            carritoElemento.appendChild(li);
+        });
+
+        // Mostrar el total del carrito
+        const totalCarritoElemento = document.getElementById('totalCarrito');
+        if (totalCarritoElemento) {
+            totalCarritoElemento.textContent = `Total del Carrito: $${totalCarrito.toFixed(2)}`;
+        }
+    } else {
+        console.error('El elemento con ID "carrito" no se encontró en el DOM.');
+    }
 };
 
 // Función para crear las tarjetas de los cómics
@@ -200,6 +235,7 @@ document.getElementById('cartIcon').addEventListener('click', () => {
     const carritoModal = new bootstrap.Modal(document.getElementById('carritoModal'));
     carritoModal.show();
 });
+
 
 // Cargar los cómics y crear las tarjetas
 getPersonajes()
