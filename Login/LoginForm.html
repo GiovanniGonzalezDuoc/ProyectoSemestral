@@ -13,26 +13,23 @@
     <!-- Body -->
     <div class="formulario">
         <h1>Inicio de Sesion</h1>
-        <form method="post">
+        <form id="loginForm" method="post"> 
             <div class="email">
-                <input type="email" placeholder=" ">
+                <input type="email" id="emailInput" placeholder=" ">
                 <label>Correo Electronico:</label>
             </div>
             <div class="email">
-                <input type="password" placeholder=" ">
+                <input type="password" id="passwordInput" placeholder=" ">
                 <label>Contraseña:</label>
             </div>
-            <a href="./OlvidarContraseñaForm.html">
-                <div class="recordar">¿Olvido su Contraseña?</div>
-            </a>
-            <a href="./UsuarioRegistrado.html">
-                <input type="button" value="Iniciar">
-            </a>
+            <input class="buttonregistro" type="submit" value="Iniciar">
             <div class="registrarse">
                 Quiere hacer el <a href="./RegisterForm.html">Registro</a>
             </div>
+            <div id="errorMessage" style="color: red;"></div> <!-- Aquí se mostrará el mensaje de error -->
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="../assets/js/login.js"></script>
 </body>
 </html>
