@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const url = 'https://my.api.mockaroo.com/comics.json?key=23056990';
+    const url = 'https://my.api.mockaroo.com/comics.json?key=c917b880';
 
     fetch(url)
         .then(response => response.json())

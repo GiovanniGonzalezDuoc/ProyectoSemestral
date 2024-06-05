@@ -277,3 +277,27 @@ body{
 .clear {
     clear: both;
 }
+@media (max-width: 800px) {
+    .carousel-inner.slide-box .carousel-item {
+        display: block; /* Cambiar el comportamiento de los items del carrusel */
+        width: 100%; /* Ancho del 100% para ocupar todo el espacio disponible */
+        margin-right: 0; /* Eliminar margen derecho */
+    }
+    
+    .carousel-inner.slide-box {
+        max-height: unset; /* Eliminar la altura máxima */
+        display: flex; /* Usar flexbox para organizar los elementos en una fila */
+        flex-wrap: nowrap; /* No permitir que los elementos se envuelvan en dispositivos móviles */
+    }
+
+    .carousel-inner.slide-box .carousel-item {
+        flex: 0 0 auto; /* Las imágenes del carrusel no deben cambiar su tamaño */
+    }
+    
+    /* Ajuste para mantener el funcionamiento del carrusel */
+    .carousel-inner.slide-box.carousel-inner .carousel-item-next,
+    .carousel-inner.slide-box.carousel-inner .carousel-item-prev,
+    .carousel-inner.slide-box.carousel-inner .carousel-item.active {
+        display: block; /* Asegurar que los elementos activos y próximos se muestren correctamente */
+    }
+}
