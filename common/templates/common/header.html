@@ -5,9 +5,9 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Comics</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Sobre Nosotros</a></li>
+        <li><a href="{% url 'home' %}" class="nav-link px-2 link-{% if request.path == '/' %}secondary{% else %}dark{% endif%}">Home</a></li>
+        <li><a href="{% url 'comics' %}" class="nav-link px-2 link-{% if request.path == '/comics/' %}secondary{% else %}dark{% endif%}">Comics</a></li>
+        <li><a href="{% url 'about-us' %}" class="nav-link px-2 link-{% if request.path == '/about-us/' %}secondary{% else %}dark{% endif%}">Sobre Nosotros</a></li>
       </ul>
 
       {% if user.is_authenticated %}
@@ -20,6 +20,8 @@
         <a role="button" class="btn btn-outline-primary me-2" href="{% url 'auth' %}">Login</a>
         <a role="button" class="btn btn-primary" href="{% url 'sign-up' %}">Sign-up</a>
       </div>
+
+      <h1> {{ request.path}}</h1>
 
       {% endif %}
     </header>
