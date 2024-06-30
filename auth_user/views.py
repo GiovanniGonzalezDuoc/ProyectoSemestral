@@ -6,7 +6,19 @@ from django.db import IntegrityError
 
 # Create your views here.
 def auth(request):
-    return render(request, 'auth_user/auth.html')
+    if request.method == 'GET':
+        return render(request, 'auth_user/auth.html')
+    
+    else:
+        user = authenticate(
+            username = request.POST["username"],
+            password = request.POST["password"]
+        )
+        if user is None:
+            return render(request, 'auth_user/auth.html', {"error": "Usuario no encontrado"})
+        
+        login(request, user)
+        return redirect('home')
 
 def sign_up(request):
     if request.method == 'GET':
@@ -28,9 +40,9 @@ def sign_up(request):
                 return redirect('home')
             
             except IntegrityError:
-                return render(request, 'auth_user/auth.html', {"error": "Usuario ya existe"})
+                return render(request, 'auth_user/sign-up.html', {"error": "Usuario ya existe"})
             
-        return render(request, 'auth_user/auth.html', {"error": "Passwords did not match."})
+        return render(request, 'auth_user/sign-up.html', {"error": "Passwords did not match."})
 
 def log_out(request):
     logout(request)
