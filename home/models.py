@@ -53,3 +53,12 @@ class Compra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.usuario} - {self.producto.nombre_comic}"
+    
+class Contacto(models.Model):
+    id_solicitud = models.AutoField(primary_key=True)
+    email_solicitud = models.EmailField(max_length=250)
+    nombre_solicitud = models.CharField(max_length=250)
+    mensaje_solicitud = models.TextField()
+
+    def str(self):
+        return f"{self.nombre_solicitud} - {self.email_solicitud}"

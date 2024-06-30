@@ -2,5 +2,8 @@
 
 {% block content %}
 
-
+    {% for comic in comics %}
+        {% include 'common/cards.html' with comic=comic %}
+    {% endfor %}
+    
 {% endblock %}
