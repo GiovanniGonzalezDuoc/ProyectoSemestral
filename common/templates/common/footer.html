@@ -1,3 +1,8 @@
+{% if 'auth' in request.path %}
+
+{% else %}
+
+{% comment %}
 <div class="container">
     <footer class="py-5">
       <div class="row">
@@ -48,3 +53,49 @@
       </div>
     </footer>
   </div>
+
+{% endcomment %}
+  <footer class="footer">
+    <div class="conteiner-footer">
+        <div class="footer-row">
+            <div class="footer-links">
+                <h4>Compañia</h4>
+                <ul>
+                    <li><a href="./Login/SobreNosotros.html">Nosotros</a></li>
+                    <li><a href="#">Nuestros Servicios</a></li>
+                    <li><a href="#">Politica de privacidad</a></li>
+                    <li><a href="#">Afiliate</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas</a></li>
+                    <li><a href="#">Compras</a></li>
+                    <li><a href="#">Envios</a></li>
+                    <li><a href="#">Estatus de la orden</a></li>
+                    <li><a href="#">Pago</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="#" id="comicsLink">Comics</a></li>
+                    <li><a href="#" id="comicsLink">Comics Originales</a></li>
+                    <li><a href="#" id="comicsLink">Comics Animes</a></li>
+                    <li><a href="#" id="comicsLink">Comics Destacados</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Siguenos</h4>
+                <div class="social-link">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+{% endif %}
