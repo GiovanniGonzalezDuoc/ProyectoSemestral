@@ -31,4 +31,7 @@ def sign_up(request):
                 return render(request, 'auth_user/auth.html', {"error": "Usuario ya existe"})
             
         return render(request, 'auth_user/auth.html', {"error": "Passwords did not match."})
-            
+
+def log_out(request):
+    logout(request)
+    return redirect('home')
