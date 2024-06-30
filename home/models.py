@@ -22,8 +22,8 @@ class Tipo(models.Model):
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True)
     descripcion = models.CharField(max_length=250, null=True, blank=True)
-    imagen = models.CharField(max_length=250)
-    nombre_comic = models.CharField(max_length=250)
+    imagen = models.ImageField(upload_to="comic", null=True)
+    nombre = models.CharField(max_length=250)
     precio = models.CharField(max_length=250)
     stock = models.IntegerField()
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
