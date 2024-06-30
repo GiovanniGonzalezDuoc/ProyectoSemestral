@@ -6,44 +6,44 @@
 {% endblock %}
 
 {% block content %}
-<div class="formulario">
+<main class="form-signin w-100 m-auto text-center">
     <form method="POST">
-        {% csrf_token %}
+      {% csrf_token %}
+      
+      <h1 class="h3 mb-3 mt-3 fw-normal">Please sign in</h1>
+  
+      <div class="form-floating mt-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Junaito" name="username" autofocus autocapitalize="none" autocomplete="username" required/>
+        <label for="floatingInput">Nombre de Usuario</label>
+      </div>
 
-        <h1>Registro de Usuario</h1>
+      <div class="form-floating mt-1">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Juan" name="firstname" autofocus autocapitalize="none" required/>
+        <label for="floatingInput">Nombre</label>
+      </div>
+
+      <div class="form-floating mt-1">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Contreras" name="lastname" autofocus autocapitalize="none" required/>
+        <label for="floatingInput">Apellido</label>
+      </div>
+
+      <div class="form-floating mt-1">
+        <input type="email" class="form-control" id="floatingInput" placeholder="ejemplo@ejemplo.com" name="email" autofocus autocapitalize="none" autocomplete="email" required/>
+        <label for="floatingInput">Email</label>
+      </div>
+
+      <div class="form-floating mt-1 mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="password1" autocomplete="current-password" required autofocus autocapitalize="none"/>
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="form-floating mt-1 mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Confirmar contraseña" name="password2" autocomplete="current-password" required autofocus autocapitalize="none"/>
+        <label for="floatingPassword">Confirmar contraseña</label>
+      </div>
         
-        <div class="input-container username">
-            <input type="text" id="username" name="username" required>
-            <label for="username">Nombre de Usuario:</label>
-            <span></span>
-        </div>
-        <div class="input-container firstname">
-            <input type="text" id="firstname" name="firstname" required>
-            <label for="firstname">Nombre:</label>
-            <span></span>
-        </div>
-        <div class="input-container lastname">
-            <input type="text" id="lastname" name="lastname" required>
-            <label for="lastname">Apellido:</label>
-            <span></span>
-        </div>
-        <div class="input-container email">
-            <input type="email" id="email" name="email" required>
-            <label for="email">Correo Electrónico:</label>
-            <span></span>
-        </div>
-        <div class="input-container password1">
-            <input type="password" id="password1" name="password1" required>
-            <label for="password1">Contraseña:</label>
-            <span></span>
-        </div>
-        <div class="input-container password2">
-            <input type="password" id="password2" name="password2" required>
-            <label for="password2">Confirmar Contraseña:</label>
-            <span></span>
-        </div>
-        <button class="btn btn-primary" type="submit">Registrarse</button>
+      <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Sign in</button>
+
     </form>
-    {{error}}
-</div>
+</main>
 {% endblock %}
