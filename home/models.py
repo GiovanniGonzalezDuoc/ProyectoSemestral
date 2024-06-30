@@ -1,14 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Categoria(models.Model):
-    id_categoria = models.AutoField(max_length=250, primary_key=True)
-    nombre = models.CharField(max_length=250)
-    descripcion = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.nombre
-
 
 class Editorial(models.Model):
     id_editorial = models.AutoField(primary_key=True)
@@ -20,22 +12,20 @@ class Editorial(models.Model):
 
 
 class Tipo(models.Model):
-    id_tipo = models.AutoField(max_length=250, primary_key=True)
+    id_tipo = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=250)
     descripcion = models.CharField(max_length=250)
 
     def __str__(self):
         return self.nombre
 
-
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True)
     descripcion = models.CharField(max_length=250, null=True, blank=True)
-    imagen = models.BinaryField()
+    imagen = models.CharField(max_length=250)
     nombre_comic = models.CharField(max_length=250)
     precio = models.CharField(max_length=250)
     stock = models.IntegerField()
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
 
@@ -53,12 +43,3 @@ class Compra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.usuario} - {self.producto.nombre_comic}"
-    
-class Contacto(models.Model):
-    id_solicitud = models.AutoField(primary_key=True)
-    email_solicitud = models.EmailField(max_length=250)
-    nombre_solicitud = models.CharField(max_length=250)
-    mensaje_solicitud = models.TextField()
-
-    def str(self):
-        return f"{self.nombre_solicitud} - {self.email_solicitud}"
