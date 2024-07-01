@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tipos</title>
+</head>
+<body>
+    <h1>Lista de Tipos</h1>
+    <a href="{% url 'tipos_add' %}">Agregar Tipo</a>
+    <ul>
+        {% for tipo in tipos %}
+        <li>
+            {{ tipo.nombre }} - {{ tipo.descripcion }}
+            <a href="{% url 'tipos_find_edit' tipo.pk %}">Editar</a>
+            <form method="post" action="{% url 'tipos_del' tipo.pk %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+            </form>
+            {% empty %}
+            <li>No hay tipos registrados.</li>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crud_home' %}">Volver al Panel Principal</a>
+</body>
+</html>

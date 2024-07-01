@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <a href="{% url 'usuarios_add' %}">Crear Nuevo Usuario</a>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>
+            <a href="{% url 'usuarios_find_edit' usuario.pk %}">{{ usuario.username }}</a>
+            (<a href="{% url 'usuarios_del' usuario.pk %}">Eliminar</a>)
+        </li>
+        {% empty %}
+        <li>No hay tipos registrados.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crud_home' %}">Volver al Panel Principal</a>
+</body>
+</html>

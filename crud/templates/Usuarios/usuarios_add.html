@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if usuario %}Editar{% else %}Agregar{% endif %} Usuario</title>
+</head>
+<body>
+    <h1>{% if usuario %}Editar{% else %}Agregar{% endif %} Usuario</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'usuarios_list' %}">Volver a la lista</a>
+    {% if mensaje %}
+    <p>{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>
