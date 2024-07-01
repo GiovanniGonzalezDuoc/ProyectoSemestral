@@ -1,0 +1,37 @@
+{% load static %}
+<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if items %}
+                    <ul class="list-group">
+                        {% for item in items %}
+                            <li class="list-group-item">
+                                <img src="{{ item.producto.imagen.url }}" alt="{{ item.producto.nombre }}" width="50" height="50">
+                                {{ item.producto.nombre }} - ${{ item.producto.precio }} x {{ item.cantidad }}
+                                <form method="post" action="{% url 'eliminar_carrito' item.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                                <form method="post" action="{% url 'modificar_cantidad' item.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                                    <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay productos en el carrito.</p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

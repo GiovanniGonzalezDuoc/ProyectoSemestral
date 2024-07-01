@@ -4,7 +4,7 @@
 {% load static %}
 
 <header class="custom-header px-4">
-  <nav class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 custom-header ">
+  <nav class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 custom-header">
     
     <a href="{% url 'home' %}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0">
       <img src="{% static 'img/logo.jpg' %}" class="brand" alt="Imagen-Logo">
@@ -19,9 +19,9 @@
     {% if user.is_authenticated %}
     <div class="col-md-3 text-end">
       <a role="button" class="btn btn-outline-primary me-2" href="{% url 'log-out' %}">Log Out</a>
+      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#carritoModal"><i class="bi bi-cart"></i></a>
     </div>
     {% else %}
-
     <div class="col-md-3 text-end">
       <a role="button" class="btn btn-outline-primary me-2" href="{% url 'auth' %}">Login</a>
       <a role="button" class="btn btn-primary" href="{% url 'sign-up' %}">Sign-up</a>
@@ -29,5 +29,7 @@
     {% endif %}
   </nav>
 </header>
+
+{% include 'common/detalles-carrito.html' %}
 
 {% endif %}
