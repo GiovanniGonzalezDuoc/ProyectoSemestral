@@ -20,7 +20,7 @@ class UsuarioForm(forms.ModelForm):
         return user
     
 from django import forms
-from .models import Producto
+from home.models import Producto
 #PRODUCTOS
 class ProductoForm(forms.ModelForm):
     class Meta:
@@ -29,7 +29,7 @@ class ProductoForm(forms.ModelForm):
 
 #EDITORIAL
 from django import forms
-from .models import Editorial
+from home.models import Editorial
 
 class EditorialForm(forms.ModelForm):
     class Meta:
@@ -38,7 +38,7 @@ class EditorialForm(forms.ModelForm):
         
 #TIPO
 from django import forms
-from .models import Tipo
+from home.models import Tipo
 
 class TipoForm(forms.ModelForm):
     class Meta:
