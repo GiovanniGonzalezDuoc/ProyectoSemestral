@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from .models import Producto
+from home.models import Producto
 from .forms import UsuarioForm,ProductoForm
 from .forms import UsuarioForm
 #CRUD
@@ -76,7 +76,7 @@ def usuarios_update(request, pk):
 
 # Productos
 from django.shortcuts import render, redirect,get_object_or_404
-from .models import Producto
+from home.models import Producto
 from .forms import ProductoForm  # Asegúrate de tener el formulario definido
 
 def productos_list(request):
@@ -117,7 +117,7 @@ def productos_find_edit(request, pk):
 
 # EDITORIAL
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Editorial
+from home.models import Editorial
 from .forms import EditorialForm  # Asegúrate de tener el formulario definido
 
 def editoriales_list(request):
@@ -156,7 +156,7 @@ def editoriales_find_edit(request, pk):
     return render(request, "editorial/editorial_edit.html", context)
 #TIPO
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Tipo
+from home.models import Tipo
 from .forms import TipoForm  # Asegúrate de tener el formulario definido
 
 def tipos_list(request):

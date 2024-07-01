@@ -9,7 +9,7 @@
     <ul>
         {% for producto in productos %}
         <li>
-            {{ producto.nombre }} - {{ producto.descripcion }}
+            {{ producto.nombre }}
             <a href="{% url 'productos_find_edit' producto.pk %}">Editar</a>
             <form method="post" action="{% url 'productos_del' producto.pk %}" style="display: inline;">
                 {% csrf_token %}
