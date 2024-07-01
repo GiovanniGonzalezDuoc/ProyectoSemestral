@@ -6,10 +6,11 @@ def home(request):
     return render(request, 'home/home.html')
 
 def comics(request):
-
     comics = Producto.objects.all()
-
     return render(request, 'home/comics.html', {"comics": comics})
+
+def detalle_producto(request, id_producto):
+    pass
 
 def about_us(request):
     return render(request, 'home/about-us.html')
