@@ -19,9 +19,12 @@ class Carro:
         else:
             for key, value in self.carro.items():
                 if key == str(producto.id_producto):
-                    value["cantidad"] += 1
-                    value["precio"] = float(value["precio"]) + float(producto.precio)
-                    break
+                    if value["cantidad"] < producto.stock:
+                        value["cantidad"] += 1
+                        value["precio"] = float(value["precio"]) + float(producto.precio)
+                        break
+                    else:
+                        self.request.session['error_message'] = "No se pueden agregar más productos, se ha alcanzado el límite de stock."
         self.guardar_carro()
 
     def guardar_carro(self):

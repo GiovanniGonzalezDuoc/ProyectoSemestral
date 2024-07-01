@@ -8,7 +8,8 @@ def home(request):
 
 def comics(request):
     comics = Producto.objects.all()
-    return render(request, 'home/comics.html', {"comics": comics})
+    error_message = request.session.pop('error_message', None)
+    return render(request, 'home/comics.html', {"comics": comics, "error_message": error_message})
 
 def detalle_comic(request, producto_id):
     comic = get_object_or_404(Producto, id_producto=producto_id)
@@ -18,8 +19,6 @@ def detalle_comic(request, producto_id):
 def agregar_producto(request, producto_id):
     carro = Carro(request)
     producto = Producto.objects.get(id_producto=producto_id)
-    imagen_url = producto.imagen.url
-
     carro.agregar(producto = producto)
     return redirect('/comics?mostrar_carrito=True')
 
@@ -31,8 +30,11 @@ def eliminar_producto(request, producto_id):
     return redirect('/comics?mostrar_carrito=True')
 
 @login_required
-def restar_producto(request):
-    pass
+def restar_producto(request, producto_id):
+    carro = Carro(request)
+    producto = Producto.objects.get(id_producto = producto_id)
+    carro.restar_producto(producto = producto)
+    return redirect('/comics?mostrar_carrito=True')
 
 @login_required
 def limpiar_carro(request):
