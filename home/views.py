@@ -19,7 +19,7 @@ def detalle_comic(request, producto_id):
 def agregar_producto(request, producto_id):
     carro = Carro(request)
     producto = Producto.objects.get(id_producto=producto_id)
-    carro.agregar(producto = producto)
+    error_message = carro.agregar(producto = producto)
     return redirect('/comics?mostrar_carrito=True')
 
 @login_required

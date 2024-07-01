@@ -37,6 +37,7 @@ class Carro:
             del self.carro[producto_id]
             self.guardar_carro()
 
+
     def restar_producto(self, producto):
         for key, value in self.carro.items():
             if key == str(producto.id_producto):
