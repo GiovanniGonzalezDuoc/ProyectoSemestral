@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Producto, Carrito, ItemCarrito
+from .models import Producto
 from common.carro import Carro
 
 def home(request):
@@ -21,11 +21,14 @@ def agregar_producto(request, producto_id):
     imagen_url = producto.imagen.url
 
     carro.agregar(producto = producto)
-    return redirect("comics")
+    return redirect('/comics?mostrar_carrito=True')
 
 @login_required
-def eliminar_producto(request):
-    pass
+def eliminar_producto(request, producto_id):
+    carro = Carro(request)
+    producto = Producto.objects.get(id_producto=producto_id)
+    carro.eliminar(producto = producto)
+    return redirect('/comics?mostrar_carrito=True')
 
 @login_required
 def restar_producto(request):
