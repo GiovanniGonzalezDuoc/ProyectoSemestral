@@ -38,3 +38,68 @@ body{
     border-bottom: 2px solid #00C3FF;
     margin-bottom: 1rem;
 }
+/* Estilo para testimonios */
+#testimonials {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+  }
+  
+  #testimonials h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  #testimonials blockquote {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-style: italic;
+    margin-bottom: 100px;
+  }
+  
+  #testimonials blockquote::before {
+    content: "“";
+    font-size: 4em;
+    color: #e9ecef;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+  
+  #testimonials blockquote::after {
+    content: "”";
+    font-size: 4em;
+    color: #e9ecef;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+  }
+  
+  #testimonials .stars {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+  }
+  
+  #testimonials .stars i {
+    color: #ffcc00;
+    margin: 0 2px;
+  }
+  
+  #testimonials blockquote footer {
+    margin-top: 35px;
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  /* Añadir espaciado entre letras y palabras */
+  #testimonials blockquote p {
+    letter-spacing: 0.05em; 
+    word-spacing: 0.1em;
+    line-height: 1.5;
+  }
+  
+  

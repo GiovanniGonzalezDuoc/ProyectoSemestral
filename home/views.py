@@ -4,7 +4,10 @@ from .models import Producto
 from common.carro import Carro
 
 def home(request):
-    return render(request, 'home/home.html')
+    comics = Producto.objects.all()
+    error_message = request.session.pop('error_message', None)
+    return render(request, 'home/home.html', {"comics": comics, "error_message": error_message})
+
 
 def comics(request):
     comics = Producto.objects.all()
