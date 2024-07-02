@@ -43,6 +43,10 @@ def restar_producto(request, producto_id):
 def limpiar_carro(request):
     pass
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2ef769d52d15013981f0d2bca192f78fcfb45fae
 def comprar(request):
     return render(request, 'common/compra.html')
 
