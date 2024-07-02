@@ -43,5 +43,9 @@ def restar_producto(request, producto_id):
 def limpiar_carro(request):
     pass
 
+
+def comprar(request):
+    return render(request, 'common/compra.html')
+
 def about_us(request):
     return render(request, 'home/about-us.html')

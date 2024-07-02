@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import home, comics, about_us, detalle_comic
-from .views import agregar_producto, eliminar_producto, restar_producto, limpiar_carro
+from .views import agregar_producto, eliminar_producto, restar_producto, limpiar_carro, comprar
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path("eliminar/<int:producto_id>/", eliminar_producto, name="eliminar"),
     path("restar/<int:producto_id>/", restar_producto, name="restar"),
     path("limpiar/", limpiar_carro, name="limpiar"),
+    path("comprar/", comprar, name='comprar')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

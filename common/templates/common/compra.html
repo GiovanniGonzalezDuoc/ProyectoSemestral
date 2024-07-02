@@ -1,0 +1,173 @@
+{% extends 'common/index.html' %}
+
+{% block content %}
+<div class="container mb-5">
+  <main class="mb-5">
+    <div class="py-5 text-center">
+      <h2>Ingresa tus Datos</h2>
+      <p class="lead">
+        Ingresa el medio de pago para realizar la venta
+      </p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Tu compra</span>
+          <span class="badge bg-primary rounded-pill"><i class="bi bi-bag-check-fill"></i></span>
+        </h4>
+        <ul class="list-group mb-3">
+          {% for key, value in request.session.carro.items %}
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{ value.nombre }}</h6>
+              <small class="text-muted description">Cantidad: {{ value.cantidad }}</small>
+            </div>
+            <span class="text-muted">${{ value.precio }}</span>
+          </li>
+          {% endfor %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (CLP)</span>
+            <strong>$ {{importe_total_carro}}</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Payment</h4>
+        <form class="needs-validation" novalidate>
+          <div class="my-3">
+            <div class="form-check">
+              <input
+                id="credit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                checked
+                required
+              />
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input
+                id="debit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input
+                id="paypal"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Nombre de la Tarjeta</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cc-name"
+                placeholder=""
+                required
+                maxlength="20"
+              />
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">Name on card is required</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Credit card number</label>
+              <input
+                type="number"
+                class="form-control"
+                id="cc-number"
+                placeholder=""
+                required
+              />
+              <div class="invalid-feedback">Credit card number is required</div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Expiration</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cc-expiration"
+                placeholder="Ej: 01"
+                required
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="cc-expiration"
+                placeholder=""  
+              >
+              <div class="invalid-feedback">Expiration date required</div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cc-cvv"
+                placeholder=""
+                required
+              />
+              <div class="invalid-feedback">Security code required</div>
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">
+            Continue to checkout
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <main class="main-container">
+    <section class="main-container__form-section">
+        <form class="form" id="paymentForm" action="">
+            <label class="form__label" for="cardholder">Cardholder Name</label>
+            <input class="form__input" type="text" name="cardholder" id="cardholder" placeholder="e.g. Jane Appleseed">
+            <div class="form__cardholder--error error"></div>
+
+            <label class="form__label" for="cardNumber">Card Number</label>
+            <input class="form__input" type="text" name="cardNumber" id="cardNumber" maxlength="19" placeholder="e.g. 1234 5678 9123 0000">
+            <div class="form__inputnumber--error error"></div>
+
+            <div class="form__date-cvc"><!-- grid -->
+                <!-- 1 -->
+                <label class="form__label" for="cardMonth">Exp. Date (MM/YY)</label>
+                <!-- 2 -->
+                <label class="form__label" for="cardCvc">CVC</label>
+                <!-- 3 -->
+                
+                <!-- 4 -->
+                <input class="form__input" type="text" maxlength="3" name="cardCvc" id="cardCvc" placeholder="e.g. 123">
+                <!-- 5 -->
+                <div class="form__errors-container">
+                    <div class="form__input-mm--error error"></div>
+                    <div class="form__input-yy--error error"></div>
+                </div>
+                <!-- 6 -->
+                <div class="form__input-cvc--error error"></div>
+            </div>
+        </form>
+    </section>
+</main>
+</div>
+{% endblock %}
