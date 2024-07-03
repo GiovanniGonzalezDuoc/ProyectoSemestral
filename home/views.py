@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Producto
@@ -10,11 +11,15 @@ def home(request):
     error_message = request.session.pop('error_message', None)
     return render(request, 'home/home.html', {"comics": comics, "error_message": error_message})
 
-
 def comics(request):
     comics = Producto.objects.all()
+    paginator = Paginator(comics, 9)
     error_message = request.session.pop('error_message', None)
-    return render(request, 'home/comics.html', {"comics": comics, "error_message": error_message})
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'home/comics.html', {"page_obj": page_obj, "error_message": error_message})
 
 def detalle_comic(request, producto_id):
     comic = get_object_or_404(Producto, id_producto=producto_id)

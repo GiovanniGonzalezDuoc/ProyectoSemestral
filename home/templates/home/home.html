@@ -5,7 +5,7 @@
   <!-- Banner Section -->
   <section id="banner" class="jumbotron text-center bg-primary text-white">
     <div class="container">
-      <h1 class="jumbotron-heading">¡Bienvenido a Comic Sharingann!</h1>
+      <h1 class="jumbotron-heading">¡Bienvenido a ComicStore!</h1>
       <p class="lead text-white">Tu lugar favorito para encontrar los mejores cómics del momento.</p>
       <a href="{% url 'comics' %}" class="btn btn-secondary my-2">Explorar Productos</a>
       <a href="{% url 'about-us' %}" class="btn btn-light my-2">Contáctanos</a>
@@ -42,13 +42,13 @@
     <div class="container">
       <h2 class="text-center">Destacados</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for comic in comics|slice:":6" %}
+        {% for comic in comics %}
         <div class="col">
           <div class="card shadow-sm">
             <img src="{{ comic.imagen.url }}" class="bd-placeholder-img card-img-top" alt="{{ comic.nombre }}" style="height: 225px; object-fit: cover;">
             <div class="card-body">
-              <h5 class="card-title">{{ comic.nombre }}</h5>
-              <p class="card-text">{{ comic.descripcion|truncatewords:20 }}</p>
+              <h5 class="card-title title">{{ comic.nombre }}</h5>
+              <p class="card-text description">{{ comic.descripcion|truncatewords:20 }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <a href="{% url 'detalle-comic' comic.id_producto %}" class="btn btn-primary">Detalle</a>
                 <small class="text-muted">${{ comic.precio }}</small>

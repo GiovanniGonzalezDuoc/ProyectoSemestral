@@ -1,13 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from home.models import Producto
-from .forms import UsuarioForm,ProductoForm
-from .forms import UsuarioForm
-#CRUD
+from .forms import UsuarioForm,ProductoForm, EditorialForm, TipoForm
+from home.models import Producto, Editorial, Tipo
+
+#TODO: CRUD
 def crud_home(request):
     return render(request, 'crud/crud_home.html')
 
-#USUARIOS
+#TODO: USUARIOS
 def usuarios_list(request):
     usuarios = User.objects.all()
     context = {"usuarios": usuarios}
@@ -55,6 +55,7 @@ def usuarios_find_edit(request, pk):
         mensaje = "Error, el usuario no existe"
         context = {"mensaje": mensaje}
         return render(request, "usuarios/usuarios_edit.html", context)
+
 def usuarios_update(request, pk):
     usuario = get_object_or_404(User, pk=pk)
     mensaje = ""
@@ -74,11 +75,7 @@ def usuarios_update(request, pk):
     context = {"form": form, "usuario": usuario, "mensaje": mensaje}
     return render(request, "usuarios/usuarios_edit.html", context)
 
-# Productos
-from django.shortcuts import render, redirect,get_object_or_404
-from home.models import Producto
-from .forms import ProductoForm  # Asegúrate de tener el formulario definido
-
+#TODO: PRODUCTOS
 def productos_list(request):
     productos = Producto.objects.all()
     context = {"productos": productos}
@@ -102,7 +99,6 @@ def productos_del(request, pk):
         return redirect('productos_list')
     return render(request, "productos/producto_confirm_delete.html", {"producto": producto})
 
-
 def productos_find_edit(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     if request.method == "POST":
@@ -115,11 +111,7 @@ def productos_find_edit(request, pk):
     context = {"form": form, "producto": producto}
     return render(request, "productos/producto_edit.html", context)
 
-# EDITORIAL
-from django.shortcuts import get_object_or_404, redirect, render
-from home.models import Editorial
-from .forms import EditorialForm  # Asegúrate de tener el formulario definido
-
+#TODO: EDITORIALES
 def editoriales_list(request):
     editoriales = Editorial.objects.all()
     context = {"editoriales": editoriales}
@@ -154,11 +146,8 @@ def editoriales_find_edit(request, pk):
         form = EditorialForm(instance=editorial)
     context = {"form": form, "editorial": editorial}
     return render(request, "editorial/editorial_edit.html", context)
-#TIPO
-from django.shortcuts import get_object_or_404, redirect, render
-from home.models import Tipo
-from .forms import TipoForm  # Asegúrate de tener el formulario definido
 
+#TODO: TIPOS
 def tipos_list(request):
     tipos = Tipo.objects.all()
     context = {"tipos": tipos}
@@ -174,7 +163,6 @@ def tipos_add(request):
         form = TipoForm()
     context = {"form": form}
     return render(request, "tipo/tipo_add.html", context)
-
 
 def tipos_del(request, pk):
     tipo = get_object_or_404(Tipo, pk=pk)

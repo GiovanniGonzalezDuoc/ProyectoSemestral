@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
   const urlParams = new URLSearchParams(window.location.search);
   const mostrarCarrito = urlParams.get('mostrar_carrito');
   if (mostrarCarrito === 'True') {
-      var myModal = new bootstrap.Modal($('#carritoModal')[0]);
-      myModal.show();
+    var myModal = new bootstrap.Modal($('#carritoModal')[0]);
+    myModal.show();
   }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Nombre de la Tarjeta: Solo letras y espacios
-  document.getElementById('cardholder').addEventListener('input', function(e) {
+  document.getElementById('cardholder').addEventListener('input', function (e) {
     let cardholder = e.target;
     cardholder.value = cardholder.value.replace(/[^a-zA-Z\s]/g, '');
     document.getElementById('displayCardholder').innerText = cardholder.value || 'Jane Appleseed';
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Número de Tarjeta: Solo números de 16 dígitos
-  document.getElementById('cardNumber').addEventListener('input', function(e) {
+  document.getElementById('cardNumber').addEventListener('input', function (e) {
     let cardNumber = e.target;
     cardNumber.value = cardNumber.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim();
     if (cardNumber.value.length > 19) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Fecha de Expiración (MM/YY): Mes no puede ser mayor a 12, solo números; Año debe ser exactamente 2 dígitos
-  document.getElementById('cardMonth').addEventListener('input', function(e) {
+  document.getElementById('cardMonth').addEventListener('input', function (e) {
     let cardMonth = e.target;
     cardMonth.value = cardMonth.value.replace(/\D/g, '');
     if (parseInt(cardMonth.value, 10) > 12) {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     validateForm();
   });
 
-  document.getElementById('cardYear').addEventListener('input', function(e) {
+  document.getElementById('cardYear').addEventListener('input', function (e) {
     let cardYear = e.target;
     cardYear.value = cardYear.value.replace(/\D/g, '').slice(0, 2); // Limitar a 2 dígitos
     document.getElementById('displayCardYear').innerText = cardYear.value || '00';
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // CVV: Hasta 4 números
-  document.getElementById('cardCvc').addEventListener('input', function(e) {
+  document.getElementById('cardCvc').addEventListener('input', function (e) {
     let cardCvc = e.target;
     cardCvc.value = cardCvc.value.replace(/\D/g, '').slice(0, 3); // Permitir hasta 4 dígitos
     document.getElementById('displayCardCvc').innerText = cardCvc.value || '000';
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('confirmButton').disabled = !isFormValid;
   }
 
-  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+  document.getElementById('paymentForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Validate if any field in the form is filled
@@ -115,3 +115,40 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = '/agradecimiento';
   });
 });
+//Sign-up
+const registrationForm = document.getElementById('registration-form');
+const passwordInput1 = document.getElementById('floatingPassword');
+const passwordInput2 = document.getElementById('floatingPasswordConfirm');
+const errorPasswordModal = document.getElementById('error-password-modal');
+
+registrationForm.addEventListener('submit', function(event) {
+  if (passwordInput1.value !== passwordInput2.value) {
+    event.preventDefault();
+    errorPasswordModal.classList.add('show');
+    errorPasswordModal.style.display = 'block';
+    document.body.classList.add('modal-open'); 
+    passwordInput1.value = '';
+    passwordInput2.value = ''; 
+  }
+});
+
+// Cierra el modal al hacer clic fuera de él
+errorPasswordModal.addEventListener('click', function(event) {
+  if (event.target === errorPasswordModal) {
+    errorPasswordModal.classList.remove('show');
+    errorPasswordModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+});
+
+// Cierra el modal al presionar el botón "Cerrar"
+const closePasswordModalBtn = errorPasswordModal.querySelector('.btn-secondary');
+if (closePasswordModalBtn) {
+  closePasswordModalBtn.addEventListener('click', function() {
+    errorPasswordModal.classList.remove('show');
+    errorPasswordModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  });
+}
+
+

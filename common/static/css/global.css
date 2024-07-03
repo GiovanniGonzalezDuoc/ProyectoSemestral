@@ -101,5 +101,26 @@ body{
     word-spacing: 0.1em;
     line-height: 1.5;
   }
+
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .btn-comprar {
+    background-color: #dc3545!important;
+    opacity: .65;
+  }
   
   

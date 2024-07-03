@@ -1,54 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Panel CRUD Principal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
+{% extends 'common/index.html' %}
 
-        h1 {
-            color: #333;
-            text-align: center;
-        }
+{% block content %}
+<div class="container marketing mt-5 mb-5">
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        a:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <h1>Panel CRUD Principal</h1>
-    <ul>
-        <li><a href="{% url 'editoriales_list' %}">Editoriales</a></li>
-        <li><a href="{% url 'usuarios_list' %}">Usuarios</a></li>
-        <li><a href="{% url 'productos_list' %}">Productos</a></li>
-        <li><a href="{% url 'tipos_list' %}">Tipos</a></li>
-        <li><a href="{% url 'home' %}">Volver Al Inicio.</a></li>
-    </ul>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-text">Gestiona los Comics de tu tienda</p>
+                    <a href="{% url 'productos_list' %}" class="btn btn-primary">Gestionar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Editoriales</h5>
+                    <p class="card-text">Gestiona las editoriales de tu tienda</p>
+                    <a href="{% url 'editoriales_list' %}" class="btn btn-primary">Gestionar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tipos</h5>
+                    <p class="card-text">Gestiona los Tipos de Comics de tu tienda</p>
+                    <a href="{% url 'tipos_list' %}" class="btn btn-primary">Gestionar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Usuarios</h5>
+                    <p class="card-text">Gestiona los Usuarios de tu tienda</p>
+                    <a href="{% url 'usuarios_list' %}" class="btn btn-primary">Gestionar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="d-flex mt-3 justify-content-center align-items-center w-100">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Volver Al Inicio.</h5>
+                    <p class="card-text">Para Volver Al Inicio.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Ir Al Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

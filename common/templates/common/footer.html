@@ -1,4 +1,4 @@
-{% if 'auth' in request.path %}
+{% if 'auth' in request.path or 'crud' in request.path%}
 
 {% else %}
 <div class="custom-footer">
