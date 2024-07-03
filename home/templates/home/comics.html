@@ -20,7 +20,9 @@
                   {% if user.is_authenticated %}
                   <a href="{% url 'agregar' comic.id_producto %}" class="btn btn-sm text-bg-danger bg-danger">Comprar</a>
                   {% else %}
-                  <a class="btn btn-sm text-bg-danger btn-comprar" id="btn-comprar">Comprar</a>
+                  <button type="button" class="btn btn-sm text-bg-danger btn-comprar" id="btn-comprar" data-bs-toggle="modal" data-bs-target="#errorCompraModal">
+                    Comprar
+                  </button>
                   {% endif %}
                 </div>
                 <small class="text-muted">${{ comic.precio }}</small>
