@@ -42,7 +42,7 @@
     <div class="container">
       <h2 class="text-center">Destacados</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for comic in comics %}
+        {% for comic in comics|slice:":6"%}
         <div class="col">
           <div class="card shadow-sm">
             <img src="{{ comic.imagen.url }}" class="bd-placeholder-img card-img-top" alt="{{ comic.nombre }}" style="height: 225px; object-fit: cover;">
